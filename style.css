@@ -8,7 +8,6 @@
   --bg-main: var(--col-dark);
   --bg-card: rgba(28, 19, 16, 0.95);
 
-  --accent: var(--col-blue);
   --text-main: var(--col-light);
   --text-muted: #d1c9b4;
 
@@ -27,9 +26,16 @@
   padding: 0;
 }
 
+html,
+body {
+  height: 100%;
+}
+
 /* Base */
 body {
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
   font-family: "Poppins", system-ui, sans-serif;
   background: radial-gradient(circle at top, #3f2c24, #160f0c);
   color: var(--text-main);
@@ -38,9 +44,8 @@ body {
 
 /* Header */
 .site-header {
-  max-width: 1120px;
-  margin: 0 auto;
-  padding: 2.5rem 1.5rem 1.2rem;
+  width: 100%;
+  padding: 2.5rem clamp(1.5rem, 6vw, 6rem) 1.2rem;
 }
 
 .site-title {
@@ -54,22 +59,31 @@ body {
   text-align: center;
   margin-top: 0.4rem;
   font-size: 0.9rem;
+  color: var(--text-muted);
 }
 
-/* Main layout */
+/* Main layout — FULL WIDTH */
 .site-main {
-  max-width: 720px;
-  margin: 0 auto;
-  padding: 2.5rem 1.5rem 4rem;
+  flex: 1;
+  width: 100%;
+  padding: 3rem clamp(1.5rem, 6vw, 6rem) 4rem;
+  display: flex;
 }
 
-/* Blog post card */
+/* Post — STRETCHED BUT READABLE */
 .post {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+
   background: var(--bg-card);
-  padding: 2.6rem 2.4rem 2.8rem;
+  padding: 3rem clamp(2rem, 4vw, 5rem);
   border-radius: var(--radius-lg);
   border: 1px solid rgba(244, 247, 190, 0.15);
   box-shadow: var(--shadow-soft);
+
+  display: flex;
+  flex-direction: column;
 }
 
 /* Post header */
@@ -113,6 +127,7 @@ body {
   font-size: 0.95rem;
   color: var(--text-muted);
   margin-bottom: 0.8rem;
+  max-width: 75ch; /* editorial feel */
 }
 
 /* Responsive */
